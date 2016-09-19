@@ -16,7 +16,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ScrollActivity"/>
+        <activity android:name=".ScrollActivity" android:theme="@style/AppTheme.statusBar"/>
 
     </application>
 

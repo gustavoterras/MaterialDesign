@@ -1,7 +1,8 @@
 <resources>
-    <string name="app_name">MaterialDesign</string>
+    <string name="app_name">Material Design</string>
     <string name="navigation_drawer_open">open</string>
     <string name="navigation_drawer_close">close</string>
     <string name="title">Olá Mundo!</string>
     <string name="subtitle">CollapsingToolbarLayout</string>
+    <string name="name">By Gustavo Terras</string>
 </resources>
