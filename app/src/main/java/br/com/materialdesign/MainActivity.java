@@ -11,6 +11,7 @@ import android.support.v7.widget.Toolbar;
 import android.support.design.widget.NavigationView;
 import android.view.MenuItem;
 
+import br.com.materialdesign.fragment.AnimationFragment;
 import br.com.materialdesign.fragment.HomeFragment;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -74,6 +75,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_home:
                 fragment = new HomeFragment();
                 title = "Home";
+                break;
+            case R.id.nav_animation:
+                fragment = new AnimationFragment();
+                title = "Animation";
                 break;
         }
 

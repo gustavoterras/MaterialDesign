@@ -6,5 +6,10 @@
             android:id="@+id/nav_home"
             android:icon="@android:drawable/sym_def_app_icon"
             android:title="Início" />
+
+        <item
+            android:id="@+id/nav_animation"
+            android:icon="@android:drawable/sym_def_app_icon"
+            android:title="Animações" />
     </group>
 </menu>
