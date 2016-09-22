@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<transitionSet xmlns:android="http://schemas.android.com/apk/res/android">
+    <changeBounds android:duration="350">
+        <targets android:targetId="@id/img_header" />
+    </changeBounds>
+    <fade android:duration="150">
+        <targets>
+            <target android:targetId="@id/text1" />
+            <target android:targetId="@id/text2" />
+            <target android:targetId="@id/text3" />
+            <target android:targetId="@id/btn" />
+        </targets>
+    </fade>
+</transitionSet>

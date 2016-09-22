@@ -1,13 +1,15 @@
 package br.com.materialdesign;
 
 import android.animation.Animator;
+import android.app.ActivityOptions;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -15,13 +17,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewAnimationUtils;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.TextView;
 
 public class ScrollActivity extends AppCompatActivity {
-
-    static String baconTitle = "Bacon";
-    static String baconText = "Bacon ipsum dolor amet pork belly meatball kevin spare ribs. Frankfurter swine corned beef meatloaf, strip steak.";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +36,7 @@ public class ScrollActivity extends AppCompatActivity {
 
         initCollapsingToolbar();
 
-        RecyclerView rv = (RecyclerView) findViewById(R.id.recyclerview);
+        RecyclerView rv = (RecyclerView) findViewById(R.id.recyclerView);
         rv.setLayoutManager(new LinearLayoutManager(this));
         rv.setAdapter(new RecyclerView.Adapter<ViewHolder>() {
             @Override
@@ -48,8 +46,8 @@ public class ScrollActivity extends AppCompatActivity {
 
             @Override
             public void onBindViewHolder(ViewHolder viewHolder, int position) {
-                viewHolder.text1.setText(baconTitle);
-                viewHolder.text2.setText(baconText);
+                viewHolder.text1.setText(getString(R.string.baconTitle));
+                viewHolder.text2.setText(getString(R.string.baconText));
             }
 
             @Override
@@ -74,7 +72,7 @@ public class ScrollActivity extends AppCompatActivity {
 
         switch (item.getItemId()){
             case android.R.id.home:
-                finish();
+                supportFinishAfterTransition();
                 break;
         }
 
@@ -108,7 +106,7 @@ public class ScrollActivity extends AppCompatActivity {
         });
     }
 
-    private static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    private class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView text1;
         TextView text2;
         int pink;
@@ -122,7 +120,7 @@ public class ScrollActivity extends AppCompatActivity {
             if (pink == 0)
                 pink = itemView.getContext().getResources().getColor(R.color.colorAccent);
             if (white == 0)
-                white = itemView.getContext().getResources().getColor(R.color.background_material_light);
+                white = itemView.getContext().getResources().getColor(android.R.color.white);
 
             itemView.setOnClickListener(this);
         }
@@ -138,6 +136,11 @@ public class ScrollActivity extends AppCompatActivity {
             text2.setTextColor(isVeggie ? Color.BLACK : white);
             view.setBackgroundColor(isVeggie ? white : pink);
             anim.start();
+
+            startActivity(new Intent(ScrollActivity.this, DetailActivity.class),
+                    ActivityOptions.makeSceneTransitionAnimation(ScrollActivity.this
+                            //, view, "hero"
+                    ).toBundle());
         }
     }
 }

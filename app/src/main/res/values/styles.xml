@@ -7,6 +7,16 @@
 
     <style name="AppTheme.statusBar" parent="AppTheme">
         <item name="android:windowTranslucentStatus">true</item>
+
+    </style>
+
+    <style name="AppTheme.Transition">
+        <item name="android:windowEnterTransition">@transition/slide_right</item>
+        <item name="android:windowContentTransitions">true</item>
+
+        <!--<item name="android:windowReenterTransition">@transition/slide_left</item>-->
+        <item name="android:windowTransitionBackgroundFadeDuration">700</item>
+        <!--<item name="android:windowSharedElementEnterTransition">@transition/hero</item>-->
     </style>
 
 </resources>

@@ -18,6 +18,8 @@
 
         <activity android:name=".ScrollActivity" android:theme="@style/AppTheme.statusBar"/>
 
+        <activity android:name=".DetailActivity" android:theme="@style/AppTheme.Transition"/>
+
     </application>
 
 </manifest>

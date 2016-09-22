@@ -1,16 +1,13 @@
 package br.com.materialdesign.fragment;
 
-import android.animation.ArgbEvaluator;
-import android.animation.ObjectAnimator;
-import android.app.Activity;
+import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Color;
-import android.graphics.Paint;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
@@ -25,6 +22,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import br.com.materialdesign.DetailActivity;
 import br.com.materialdesign.R;
 import br.com.materialdesign.ScrollActivity;
 
@@ -64,7 +62,12 @@ public class HomeFragment extends Fragment {
             public void onAnimationEnd(Animation animation) {
                 fab.setVisibility(View.GONE);
                 startActivity(new Intent(getActivity(), ScrollActivity.class));
-                getActivity().overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
+                //getActivity().overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
+
+                /*startActivity(new Intent(getActivity(), ScrollActivity.class),
+                        ActivityOptions.makeSceneTransitionAnimation(getActivity()).toBundle());*/
+
+                getActivity().overridePendingTransition(R.anim.slide_up, R.anim.scale_down);
             }
 
             @Override

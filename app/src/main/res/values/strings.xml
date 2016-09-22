@@ -5,4 +5,7 @@
     <string name="title">Olá Mundo!</string>
     <string name="subtitle">CollapsingToolbarLayout</string>
     <string name="name">By Gustavo Terras</string>
+    <string name="baconText">Bacon ipsum dolor amet pork belly meatball kevin spare ribs. Frankfurter swine corned beef meatloaf, strip steak.</string>
+    <string name="baconTitle">Bacon</string>
+    <string name="loremText">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam pharetra elementum euismod. Sed commodo, lorem quis suscipit dapibus, nulla ex fermentum elit, in consectetur sapien justo laoreet nunc. Maecenas interdum posuere lobortis. Sed tincidunt eu mi nec tempus. Sed eget tortor enim. Proin nec tellus quis turpis bibendum imperdiet. Phasellus orci tortor, tincidunt quis sapien eget, interdum ultrices ipsum. Sed elementum elit quis felis porta elementum. Integer elementum felis felis, laoreet volutpat ipsum eleifend vitae. Integer neque odio, elementum ac lectus non, tristique tempus nunc. Pellentesque molestie purus quis ipsum rutrum dictum.</string>
 </resources>
