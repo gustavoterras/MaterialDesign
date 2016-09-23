@@ -2,11 +2,12 @@
 
 ## CollapsingToolbarLayout
 ![CollapsingToolbarLayout][1]
-[1]: https://github.com/gustavoterras/MaterialDesign/blob/master/Screenshots/Screenshot_20160916-160426.png
+[1]: https://github.com/gustavoterras/MaterialDesign/blob/master/Screenshots/2016.09.22_21.45.42.gif
 
-![CollapsingToolbarLayout][2]
-[2]: https://github.com/gustavoterras/MaterialDesign/blob/master/Screenshots/Screenshot_20160916-160441.png
+## CircularReveal
+![CircularReveal][2]
+[2]: https://github.com/gustavoterras/MaterialDesign/blob/master/Screenshots/2016.09.22_21.51.24.gif
 
-## Home Layout
-![Home Layout][3]
-[3]: https://github.com/gustavoterras/MaterialDesign/blob/master/Screenshots/Screenshot_20160919-155702.png
+## TransitionManager with change scene
+![TransitionManager][3]
+[3]: https://github.com/gustavoterras/MaterialDesign/blob/master/Screenshots/2016.09.22_21.55.01.gif
