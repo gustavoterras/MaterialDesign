@@ -8,4 +8,17 @@
     <string name="baconText">Bacon ipsum dolor amet pork belly meatball kevin spare ribs. Frankfurter swine corned beef meatloaf, strip steak.</string>
     <string name="baconTitle">Bacon</string>
     <string name="loremText">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam pharetra elementum euismod. Sed commodo, lorem quis suscipit dapibus, nulla ex fermentum elit, in consectetur sapien justo laoreet nunc. Maecenas interdum posuere lobortis. Sed tincidunt eu mi nec tempus. Sed eget tortor enim. Proin nec tellus quis turpis bibendum imperdiet. Phasellus orci tortor, tincidunt quis sapien eget, interdum ultrices ipsum. Sed elementum elit quis felis porta elementum. Integer elementum felis felis, laoreet volutpat ipsum eleifend vitae. Integer neque odio, elementum ac lectus non, tristique tempus nunc. Pellentesque molestie purus quis ipsum rutrum dictum.</string>
+
+
+    <string-array name="images">
+        <item>http://gilbertsollars.com/images/wallpapers/best-nature-background/best-nature-background-10.jpg</item>
+        <item>http://hdwallpapers.org.in/uploads/beautiful_nature_background__hd_wallpaper_160312053120.jpg</item>
+        <item>http://www.spyderonlines.com/images/wallpapers/amazing-nature-backgrounds/amazing-nature-backgrounds-19.jpg</item>
+        <item>http://chainimage.com/images/nature-photography-backgrounds-wallpaper-658942.jpg</item>
+        <item>http://www.twitrcovers.com/wp-content/uploads/2013/09/Water-Mountains-Nature-l.jpg</item>
+        <item>http://kurld.com/images/wallpapers/cute-dog-wallpaper/cute-dog-wallpaper-15.jpg</item>
+    </string-array>
+
+    <string name="image_transition">Image transition</string>
+
 </resources>

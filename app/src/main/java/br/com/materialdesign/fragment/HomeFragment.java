@@ -61,13 +61,8 @@ public class HomeFragment extends Fragment {
             @Override
             public void onAnimationEnd(Animation animation) {
                 fab.setVisibility(View.GONE);
-                startActivity(new Intent(getActivity(), ScrollActivity.class));
-                //getActivity().overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
-
-                /*startActivity(new Intent(getActivity(), ScrollActivity.class),
-                        ActivityOptions.makeSceneTransitionAnimation(getActivity()).toBundle());*/
-
-                getActivity().overridePendingTransition(R.anim.slide_up, R.anim.scale_down);
+                startActivity(new Intent(getActivity(), ScrollActivity.class),
+                        ActivityOptions.makeSceneTransitionAnimation(getActivity()).toBundle());
             }
 
             @Override

@@ -1,22 +1,17 @@
 <resources>
+
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">#3f51b5</item>
         <item name="colorPrimaryDark">#303F9F</item>
         <item name="colorAccent">#00bcd4</item>
+        <item name="android:windowContentTransitions">true</item>
+        <item name="android:windowAllowEnterTransitionOverlap">false</item>
+        <item name="android:windowAllowReturnTransitionOverlap">false</item>
     </style>
 
     <style name="AppTheme.statusBar" parent="AppTheme">
         <item name="android:windowTranslucentStatus">true</item>
 
-    </style>
-
-    <style name="AppTheme.Transition">
-        <item name="android:windowEnterTransition">@transition/slide_right</item>
-        <item name="android:windowContentTransitions">true</item>
-
-        <!--<item name="android:windowReenterTransition">@transition/slide_left</item>-->
-        <item name="android:windowTransitionBackgroundFadeDuration">700</item>
-        <!--<item name="android:windowSharedElementEnterTransition">@transition/hero</item>-->
     </style>
 
 </resources>

@@ -31,12 +31,21 @@ public class DetailActivity extends AppCompatActivity {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
 
+        setupWindowAnimations();
+
         ViewGroup container = (ViewGroup) findViewById(R.id.content);
 
         current = Scene.getSceneForLayout(container, R.layout.activity_detail1, this);
         other = Scene.getSceneForLayout(container, R.layout.activity_detail2, this);
 
         current.enter();
+    }
+
+    private void setupWindowAnimations() {
+        Transition transition = TransitionInflater.from(this).inflateTransition(R.transition.slide_left);
+
+        getWindow().setEnterTransition(transition);
+        getWindow().setExitTransition(transition);
     }
 
     public void changeScenes(View view) {

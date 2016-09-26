@@ -13,6 +13,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.transition.Transition;
+import android.transition.TransitionInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewAnimationUtils;
@@ -35,6 +37,7 @@ public class ScrollActivity extends AppCompatActivity {
         }
 
         initCollapsingToolbar();
+        setupWindowAnimations();
 
         RecyclerView rv = (RecyclerView) findViewById(R.id.recyclerView);
         rv.setLayoutManager(new LinearLayoutManager(this));
@@ -66,6 +69,14 @@ public class ScrollActivity extends AppCompatActivity {
             }
         });
     }
+
+    private void setupWindowAnimations() {
+        Transition transition = TransitionInflater.from(this).inflateTransition(R.transition.slide_left);
+
+        getWindow().setEnterTransition(transition);
+        getWindow().setExitTransition(transition);
+    }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

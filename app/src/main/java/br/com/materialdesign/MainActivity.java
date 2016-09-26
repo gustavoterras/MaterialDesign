@@ -9,6 +9,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.support.design.widget.NavigationView;
+import android.transition.ChangeBounds;
+import android.transition.Slide;
+import android.transition.Transition;
+import android.transition.TransitionInflater;
+import android.view.Gravity;
 import android.view.MenuItem;
 
 import br.com.materialdesign.fragment.AnimationFragment;
@@ -20,6 +25,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        setupWindowAnimations();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -52,6 +59,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return true;
     }
 
+    private void setupWindowAnimations() {
+        Transition transition = TransitionInflater.from(this).inflateTransition(android.R.transition.explode);
+
+        //getWindow().setReenterTransition(transition);
+        getWindow().setExitTransition(transition);
+    }
+
     public void nextFragment(Fragment fragment, String tag){
         FragmentManager fragmentManager = getSupportFragmentManager();
 
@@ -59,11 +73,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         if(currentFragment != null && currentFragment.getTag().equals(tag)) return;
 
+        Slide slideTransition = new Slide(Gravity.RIGHT);
+        slideTransition.setDuration(getResources().getInteger(android.R.integer.config_longAnimTime));
+
+        fragment.setExitTransition(slideTransition);
+        fragment.setSharedElementEnterTransition(new ChangeBounds());
+
         fragmentManager
                 .beginTransaction()
-                .setCustomAnimations(android.R.anim.slide_in_left, android.R.anim.slide_out_right)
                 .replace(R.id.content, fragment,tag)
                 .commit();
+
     }
 
     public Fragment menuFragment(int menuID){
