@@ -18,6 +18,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 import br.com.materialdesign.R;
 import br.com.materialdesign.ViewImageActivity;
+import br.com.materialdesign.util.SquareImageView;
 
 /**
  * Created by Gustavo on 19/09/2016.
@@ -45,9 +46,9 @@ public class AnimationFragment extends Fragment{
 
             @Override
             public void onBindViewHolder(AnimationFragment.ViewHolder holder, int position) {
-                holder.urlImage =images[position];
+                holder.urlImage = images[position];
 
-                Glide.with(getActivity()).load(images[position])
+                Glide.with(getActivity()).load(holder.urlImage)
                         .thumbnail(0.5f)
                         .crossFade()
                         .diskCacheStrategy(DiskCacheStrategy.ALL)
@@ -76,20 +77,19 @@ public class AnimationFragment extends Fragment{
     }
 
     private class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        ImageView image;
+        SquareImageView image;
         String urlImage;
         ViewHolder(View itemView) {
             super(itemView);
-            this.image = (ImageView) itemView.findViewById(R.id.image);
+            this.image = (SquareImageView) itemView.findViewById(R.id.image);
 
             itemView.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View view) {
-            String transitionName = getString(R.string.image_transition);
             startActivity(new Intent(getActivity(), ViewImageActivity.class).putExtra("image", urlImage),
-                    ActivityOptions.makeSceneTransitionAnimation(getActivity(), view, transitionName).toBundle());
+                    ActivityOptions.makeSceneTransitionAnimation(getActivity(), image, image.getTransitionName()).toBundle());
         }
     }
 

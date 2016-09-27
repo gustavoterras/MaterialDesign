@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.support.design.widget.NavigationView;
 import android.transition.ChangeBounds;
+import android.transition.ChangeTransform;
 import android.transition.Slide;
 import android.transition.Transition;
 import android.transition.TransitionInflater;
@@ -60,10 +61,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void setupWindowAnimations() {
-        Transition transition = TransitionInflater.from(this).inflateTransition(android.R.transition.explode);
-
-        //getWindow().setReenterTransition(transition);
-        getWindow().setExitTransition(transition);
+        getWindow().setExitTransition(TransitionInflater.from(this).inflateTransition(R.transition.explode));
+        getWindow().setReenterTransition(TransitionInflater.from(this).inflateTransition(R.transition.grid_reenter));
     }
 
     public void nextFragment(Fragment fragment, String tag){
@@ -77,13 +76,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         slideTransition.setDuration(getResources().getInteger(android.R.integer.config_longAnimTime));
 
         fragment.setExitTransition(slideTransition);
-        fragment.setSharedElementEnterTransition(new ChangeBounds());
+        fragment.setSharedElementEnterTransition(new ChangeTransform());
 
         fragmentManager
                 .beginTransaction()
                 .replace(R.id.content, fragment,tag)
                 .commit();
-
     }
 
     public Fragment menuFragment(int menuID){

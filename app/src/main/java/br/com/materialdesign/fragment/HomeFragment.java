@@ -32,54 +32,10 @@ import br.com.materialdesign.ScrollActivity;
 public class HomeFragment extends Fragment {
 
     private Typeface typeface;
-    private ImageButton fab;
-
-    @Override
-    public void onResume() {
-        super.onResume();
-
-        if(fab != null)
-            fab.setVisibility(View.VISIBLE);
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_home, container, false);
-
-        fab = (ImageButton) rootView.findViewById(R.id.fab);
-
-        final AnimationSet animationSet = new AnimationSet(getActivity(), null);
-        animationSet.addAnimation(new AlphaAnimation(1f, 0f));
-        animationSet.addAnimation(new TranslateAnimation(0, 0, 0, -fab.getHeight()));
-        animationSet.setDuration(getResources().getInteger(android.R.integer.config_shortAnimTime));
-        animationSet.setAnimationListener(new Animation.AnimationListener() {
-            @Override
-            public void onAnimationStart(Animation animation) {
-
-            }
-
-            @Override
-            public void onAnimationEnd(Animation animation) {
-                fab.setVisibility(View.GONE);
-                startActivity(new Intent(getActivity(), ScrollActivity.class),
-                        ActivityOptions.makeSceneTransitionAnimation(getActivity()).toBundle());
-            }
-
-            @Override
-            public void onAnimationRepeat(Animation animation) {
-
-            }
-        });
-
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                fab.startAnimation(animationSet);
-            }
-        });
-
-        TextView textView = (TextView) rootView.findViewById(R.id.text);
-        textView.setTypeface(typeface);
 
         final ImageView img = (ImageView) rootView.findViewById(R.id.img);
 
@@ -89,6 +45,19 @@ public class HomeFragment extends Fragment {
         drawableFactory.setCircular(true);
 
         img.setImageDrawable(drawableFactory);
+
+        final ImageButton fab = (ImageButton) rootView.findViewById(R.id.fab);
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(), ScrollActivity.class),
+                        ActivityOptions.makeSceneTransitionAnimation(getActivity()).toBundle());
+            }
+        });
+
+        TextView textView = (TextView) rootView.findViewById(R.id.text);
+        textView.setTypeface(typeface);
 
         return rootView;
     }

@@ -13,15 +13,21 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.transition.ChangeBounds;
+import android.transition.Slide;
 import android.transition.Transition;
 import android.transition.TransitionInflater;
+import android.view.Gravity;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewAnimationUtils;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 public class ScrollActivity extends AppCompatActivity {
+
+    private static final String TAG = ScrollActivity.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,7 +77,7 @@ public class ScrollActivity extends AppCompatActivity {
     }
 
     private void setupWindowAnimations() {
-        Transition transition = TransitionInflater.from(this).inflateTransition(R.transition.slide_left);
+        Transition transition = TransitionInflater.from(this).inflateTransition(android.R.transition.fade);
 
         getWindow().setEnterTransition(transition);
         getWindow().setExitTransition(transition);
@@ -137,21 +143,40 @@ public class ScrollActivity extends AppCompatActivity {
         }
 
         @Override
-        public void onClick(View view) {
+        public void onClick(final View view) {
             boolean isVeggie = view.getBackground() != null && ((ColorDrawable) view.getBackground()).getColor() == pink;
 
             int finalRadius = (int) Math.hypot(view.getWidth() / 2, view.getHeight() / 2);
-            Animator anim = ViewAnimationUtils.createCircularReveal(view, view.getWidth() / 2, view.getHeight() / 2, 0, finalRadius);
 
             text1.setTextColor(isVeggie ? Color.BLACK : white);
             text2.setTextColor(isVeggie ? Color.BLACK : white);
             view.setBackgroundColor(isVeggie ? white : pink);
-            anim.start();
 
-            startActivity(new Intent(ScrollActivity.this, DetailActivity.class),
-                    ActivityOptions.makeSceneTransitionAnimation(ScrollActivity.this
-                            //, view, "hero"
-                    ).toBundle());
+            Animator anim = ViewAnimationUtils.createCircularReveal(view, view.getWidth() / 2, view.getHeight() / 2, 0, finalRadius);
+            anim.setDuration(getResources().getInteger(android.R.integer.config_longAnimTime));
+            anim.addListener(new Animator.AnimatorListener() {
+                @Override
+                public void onAnimationStart(Animator animator) {
+
+                }
+
+                @Override
+                public void onAnimationEnd(Animator animator) {
+                    startActivity(new Intent(ScrollActivity.this, DetailActivity.class),
+                            ActivityOptions.makeSceneTransitionAnimation(ScrollActivity.this, view, TAG).toBundle());
+                }
+
+                @Override
+                public void onAnimationCancel(Animator animator) {
+
+                }
+
+                @Override
+                public void onAnimationRepeat(Animator animator) {
+
+                }
+            });
+            anim.start();
         }
     }
 }

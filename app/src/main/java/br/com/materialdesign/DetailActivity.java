@@ -5,9 +5,11 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.transition.Scene;
+import android.transition.Slide;
 import android.transition.Transition;
 import android.transition.TransitionInflater;
 import android.transition.TransitionManager;
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,10 +44,14 @@ public class DetailActivity extends AppCompatActivity {
     }
 
     private void setupWindowAnimations() {
-        Transition transition = TransitionInflater.from(this).inflateTransition(R.transition.slide_left);
+        Transition transition = TransitionInflater.from(this).inflateTransition(R.transition.explode);
 
         getWindow().setEnterTransition(transition);
         getWindow().setExitTransition(transition);
+
+        Transition sharedTransition = TransitionInflater.from(this).inflateTransition(R.transition.change_image_transform);
+
+        getWindow().setSharedElementEnterTransition(sharedTransition);
     }
 
     public void changeScenes(View view) {

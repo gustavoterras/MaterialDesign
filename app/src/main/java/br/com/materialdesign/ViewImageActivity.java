@@ -2,8 +2,12 @@ package br.com.materialdesign;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.transition.ChangeBounds;
+import android.transition.Slide;
 import android.transition.Transition;
 import android.transition.TransitionInflater;
+import android.view.Gravity;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
@@ -29,12 +33,17 @@ public class ViewImageActivity extends AppCompatActivity {
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .centerCrop()
                 .into(imageView);
+
+        Slide slide = new Slide(Gravity.BOTTOM);
+        slide.addTarget(R.id.description);
+        slide.setInterpolator(AnimationUtils.loadInterpolator(this, android.R.interpolator.linear_out_slow_in));
+        slide.setDuration(getResources().getInteger(android.R.integer.config_longAnimTime));
+        getWindow().setEnterTransition(slide);
     }
 
     private void setupWindowAnimations() {
-        Transition transition = TransitionInflater.from(this).inflateTransition(R.transition.slide_left);
+        Transition transition = TransitionInflater.from(this).inflateTransition(R.transition.shared_photo);
 
-        getWindow().setEnterTransition(transition);
-        getWindow().setExitTransition(transition);
+        getWindow().setSharedElementEnterTransition(transition);
     }
 }
