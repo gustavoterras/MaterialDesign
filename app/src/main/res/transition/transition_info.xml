@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <transitionSet xmlns:android="http://schemas.android.com/apk/res/android">
     <changeBounds android:duration="350">
-        <targets android:targetId="@id/img_header" />
+        <targets>
+            <target android:targetId="@id/card_view" />
+            <target android:targetId="@id/img_header" />
+        </targets>
     </changeBounds>
     <fade android:duration="150">
         <targets>

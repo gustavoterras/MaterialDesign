@@ -6,15 +6,16 @@ import android.content.Intent;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+
 
 import br.com.materialdesign.R;
 import br.com.materialdesign.ViewImageActivity;
@@ -77,11 +78,13 @@ public class AnimationFragment extends Fragment{
     }
 
     private class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+        CardView cardView;
         SquareImageView image;
         String urlImage;
         ViewHolder(View itemView) {
             super(itemView);
             this.image = (SquareImageView) itemView.findViewById(R.id.image);
+            this.cardView = (CardView) itemView.findViewById(R.id.card_view);
 
             itemView.setOnClickListener(this);
         }
@@ -89,7 +92,7 @@ public class AnimationFragment extends Fragment{
         @Override
         public void onClick(View view) {
             startActivity(new Intent(getActivity(), ViewImageActivity.class).putExtra("image", urlImage),
-                    ActivityOptions.makeSceneTransitionAnimation(getActivity(), image, image.getTransitionName()).toBundle());
+                    ActivityOptions.makeSceneTransitionAnimation(getActivity(), cardView, image.getTransitionName()).toBundle());
         }
     }
 
